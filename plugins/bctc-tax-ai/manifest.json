@@ -1,0 +1,9 @@
+{
+  "name": "bctc-tax-ai",
+  "version": "0.1.0",
+  "type": "ai_service",
+  "permissions": [
+    "tenant_scope",
+    "file_upload"
+  ]
+}

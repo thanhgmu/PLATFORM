@@ -1,5 +1,7 @@
 import json
 from pathlib import Path
+from sqlalchemy.orm import Session
+from app.models.plugin import Plugin
 
 def scan_plugins():
     repo_root = Path(__file__).resolve().parents[3]
@@ -16,10 +18,18 @@ def scan_plugins():
                 "slug": manifest_path.parent.name,
                 "name": data.get("name", manifest_path.parent.name),
                 "version": data.get("version", "0.0.0"),
-                "approved": False,
-                "installed": False,
             })
         except Exception:
             continue
 
     return discovered
+
+def sync_plugins_to_db(db: Session, discovered: list[dict]):
+    for item in discovered:
+        existing = db.query(Plugin).filter(Plugin.slug == item["slug"]).first()
+        if existing:
+            existing.name = item["name"]
+            existing.version = item["version"]
+        else:
+            db.add(Plugin(slug=item["slug"], name=item["name"], version=item["version"]))
+    db.commit()

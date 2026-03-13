@@ -1,9 +1,10 @@
-from dataclasses import dataclass
-from typing import Optional
+from sqlalchemy import Column, Integer, String
+from app.db.base import Base
 
-@dataclass
-class User:
-    id: Optional[int]
-    email: str
-    hashed_password: str
-    role: str = "user"
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, nullable=False, index=True)
+    hashed_password = Column(String, nullable=False)
+    role = Column(String, nullable=False, default="user")

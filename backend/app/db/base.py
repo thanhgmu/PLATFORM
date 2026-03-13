@@ -1,3 +1,3 @@
-# Placeholder base module for future SQLAlchemy integration.
-class Base:
-    pass
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()

@@ -1,11 +1,12 @@
-from dataclasses import dataclass
-from typing import Optional
+from sqlalchemy import Column, Integer, String
+from app.db.base import Base
 
-@dataclass
-class Consent:
-    id: Optional[int]
-    tenant_id: Optional[int]
-    user_id: Optional[int]
-    scope: str
-    status: str = "granted"
-    retention_days: int = 30
+class Consent(Base):
+    __tablename__ = "consents"
+
+    id = Column(Integer, primary_key=True, index=True)
+    tenant_id = Column(Integer, nullable=True)
+    user_id = Column(Integer, nullable=True)
+    scope = Column(String, nullable=False)
+    status = Column(String, nullable=False, default="granted")
+    retention_days = Column(Integer, nullable=False, default=30)

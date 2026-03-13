@@ -1,8 +1,9 @@
-from dataclasses import dataclass
-from typing import Optional
+from sqlalchemy import Column, Integer, String
+from app.db.base import Base
 
-@dataclass
-class Tenant:
-    id: Optional[int]
-    name: str
-    owner_user_id: Optional[int] = None
+class Tenant(Base):
+    __tablename__ = "tenants"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    owner_user_id = Column(Integer, nullable=True)

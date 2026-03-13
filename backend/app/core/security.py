@@ -1,33 +1,24 @@
 from datetime import datetime, timedelta, timezone
-from hashlib import sha256
-import base64
-import hmac
-import json
-
+from jose import JWTError, jwt
+from passlib.context import CryptContext
 from app.core.config import settings
 
+ALGORITHM = "HS256"
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 def hash_password(password: str) -> str:
-    return sha256(password.encode("utf-8")).hexdigest()
+    return pwd_context.hash(password)
 
 def verify_password(password: str, hashed: str) -> bool:
-    return hash_password(password) == hashed
+    return pwd_context.verify(password, hashed)
 
 def create_access_token(subject: str) -> str:
-    payload = {
-        "sub": subject,
-        "exp": int((datetime.now(timezone.utc) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)).timestamp())
-    }
-    header = {"alg": "HS256", "typ": "JWT"}
+    expire = datetime.now(timezone.utc) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    payload = {"sub": subject, "exp": expire}
+    return jwt.encode(payload, settings.SECRET_KEY, algorithm=ALGORITHM)
 
-    def b64(data: dict) -> str:
-        raw = json.dumps(data, separators=(",", ":"), sort_keys=True).encode("utf-8")
-        return base64.urlsafe_b64encode(raw).decode("utf-8").rstrip("=")
-
-    signing_input = f"{b64(header)}.{b64(payload)}"
-    signature = hmac.new(
-        settings.SECRET_KEY.encode("utf-8"),
-        signing_input.encode("utf-8"),
-        digestmod="sha256",
-    ).digest()
-    signature_b64 = base64.urlsafe_b64encode(signature).decode("utf-8").rstrip("=")
-    return f"{signing_input}.{signature_b64}"
+def decode_access_token(token: str) -> dict | None:
+    try:
+        return jwt.decode(token, settings.SECRET_KEY, algorithms=[ALGORITHM])
+    except JWTError:
+        return None

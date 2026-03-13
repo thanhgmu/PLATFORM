@@ -1,13 +1,14 @@
-from dataclasses import dataclass
-from typing import Optional
+from sqlalchemy import Column, Integer, String
+from app.db.base import Base
 
-@dataclass
-class InterestEvent:
-    id: Optional[int]
-    tenant_id: Optional[int]
-    user_id: Optional[int]
-    event_type: str
-    channel: str
-    content_type: str
-    content: str
-    timestamp: str
+class InterestEvent(Base):
+    __tablename__ = "interest_events"
+
+    id = Column(Integer, primary_key=True, index=True)
+    tenant_id = Column(Integer, nullable=True)
+    user_id = Column(Integer, nullable=True)
+    event_type = Column(String, nullable=False)
+    channel = Column(String, nullable=False)
+    content_type = Column(String, nullable=False)
+    content = Column(String, nullable=False)
+    timestamp = Column(String, nullable=False)

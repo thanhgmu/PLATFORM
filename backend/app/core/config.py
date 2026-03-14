@@ -25,4 +25,7 @@ class Settings:
     OPENCLAW_BASE_URL = os.getenv("OPENCLAW_BASE_URL", "http://openclaw:8080")
     OPENCLAW_ENABLED = os.getenv("OPENCLAW_ENABLED", "false").lower() == "true"
 
+    SUPERADMIN_EMAIL = os.getenv("SUPERADMIN_EMAIL", "admin@example.com")
+    SUPERADMIN_PASSWORD = os.getenv("SUPERADMIN_PASSWORD", "ChangeMe123!")
+
 settings = Settings()

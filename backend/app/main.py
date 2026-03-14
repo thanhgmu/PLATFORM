@@ -15,6 +15,14 @@ app = FastAPI(title="Platform Core")
 def on_startup():
     Base.metadata.create_all(bind=engine)
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.get("/ready")
+def ready():
+    return {"status": "ready"}
+
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["auth"])
 app.include_router(tenants_router, prefix="/api/v1/tenants", tags=["tenants"])
 app.include_router(plugins_router, prefix="/api/v1/plugins", tags=["plugins"])

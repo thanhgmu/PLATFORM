@@ -1,0 +1,16 @@
+{
+  "name": "bctc-tax-ai",
+  "version": "0.1.0",
+  "type": "ai_service",
+  "permissions": [
+    "tenant_scope",
+    "file_upload"
+  ],
+  "capabilities": [
+    "financial_report_analysis",
+    "tax_draft_assist",
+    "document_summary"
+  ],
+  "approval_required": true,
+  "adapter_binding": null
+}

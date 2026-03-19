@@ -4,7 +4,7 @@ Base = declarative_base()
 
 # Existing models
 from app.models.execution_audit import ExecutionAudit  # noqa: F401,E402
-from app.models.consent import Consent  # noqa: F401,E402
+from app.models.approval_request import ApprovalRequest  # noqa: F401,E402
 from app.models.interest_event import InterestEvent  # noqa: F401,E402
 from app.models.plugin import Plugin  # noqa: F401,E402
 from app.models.recommendation import Recommendation  # noqa: F401,E402

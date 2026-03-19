@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base
 Base = declarative_base()
 
 # Existing models
-from app.models.audit_log import AuditLog  # noqa: F401,E402
+from app.models.execution_audit import ExecutionAudit  # noqa: F401,E402
 from app.models.consent import Consent  # noqa: F401,E402
 from app.models.interest_event import InterestEvent  # noqa: F401,E402
 from app.models.plugin import Plugin  # noqa: F401,E402

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from sqlalchemy.orm import Session
 
-# from app.models.plugin import Plugin
+#from app.models.plugin import Plugin
 
 
 def scan_plugins():

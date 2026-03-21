@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.models.agent_definition import AgentDefinition
 # from app.models.plugin import Plugin
-from app.services.plugin_loader import scan_plugins
+# from app.services.plugin_loader import scan_plugins
 
 
 class AgentRegistryService:

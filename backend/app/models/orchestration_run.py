@@ -8,7 +8,8 @@ class OrchestrationRun(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     case_id = Column(Integer, ForeignKey("cases.id"), nullable=False, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     objective = Column(Text, nullable=False)
     status = Column(String, nullable=False, default="queued", index=True)
     plan_json = Column(JSON, nullable=True)

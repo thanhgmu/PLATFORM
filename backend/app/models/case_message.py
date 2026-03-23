@@ -8,7 +8,8 @@ class CaseMessage(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     case_id = Column(Integer, ForeignKey("cases.id"), nullable=False, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     role = Column(String, nullable=False, default="user")
     author_type = Column(String, nullable=False, default="user")
     author_id = Column(Integer, nullable=True)

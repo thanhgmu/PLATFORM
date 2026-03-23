@@ -7,7 +7,8 @@ class SharedContextEntry(Base):
     __tablename__ = "shared_context_entries"
 
     id = Column(Integer, primary_key=True, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     case_id = Column(Integer, ForeignKey("cases.id"), nullable=True, index=True)
     scope_type = Column(String, nullable=False, default="case")
     scope_key = Column(String, nullable=True)

@@ -1,9 +1,6 @@
 import json
 from pathlib import Path
 from sqlalchemy.orm import Session
-
-
-
 def scan_plugins():
     repo_root = Path(__file__).resolve().parents[3]
     plugins_dir = repo_root / "plugins"

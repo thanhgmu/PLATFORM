@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.agents import AgentDefinitionRead, AgentDefinitionUpdate
 from app.services.registry.agent_registry_service import AgentRegistryService
 
-router = APIRouter()
+router = APIRouter(prefix="/agents", tags=["agents"])
 service = AgentRegistryService()
 
 

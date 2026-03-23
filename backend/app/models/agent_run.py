@@ -8,7 +8,8 @@ class AgentRun(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     orchestration_run_id = Column(Integer, ForeignKey("orchestration_runs.id"), nullable=False, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     agent_key = Column(String, nullable=False, index=True)
     step_no = Column(Integer, nullable=False)
     status = Column(String, nullable=False, default="queued")

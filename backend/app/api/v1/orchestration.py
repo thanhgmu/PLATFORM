@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.orchestration import OrchestrationRunCreate, OrchestrationRunRead
 from app.services.orchestration.orchestration_engine import OrchestrationEngine
 
-router = APIRouter()
+router = APIRouter(prefix="/approvals", tags=["approvals"])
 engine = OrchestrationEngine()
 
 

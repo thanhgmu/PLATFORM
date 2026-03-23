@@ -7,7 +7,8 @@ class ExecutionAudit(Base):
     __tablename__ = "execution_audits"
 
     id = Column(Integer, primary_key=True, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     case_id = Column(Integer, ForeignKey("cases.id"), nullable=True, index=True)
     orchestration_run_id = Column(Integer, ForeignKey("orchestration_runs.id"), nullable=True, index=True)
     agent_run_id = Column(Integer, ForeignKey("agent_runs.id"), nullable=True, index=True)

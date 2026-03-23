@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.shared_context import SharedContextEntryCreate, SharedContextEntryRead
 from app.services.context.shared_context_service import SharedContextService
 
-router = APIRouter(prefix="/approvals", tags=["approvals"])
+router = APIRouter(prefix="/shared-context", tags=["shared_context"])
 service = SharedContextService()
 
 

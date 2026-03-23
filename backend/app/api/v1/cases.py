@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.cases import CaseCreate, CaseRead, CaseMessageCreate, CaseMessageRead
 from app.services.cases.case_service import CaseService
 
-router = APIRouter()
+router = APIRouter(prefix="/cases", tags=["cases"])
 service = CaseService()
 
 

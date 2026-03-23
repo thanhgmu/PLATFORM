@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.approvals import ApprovalRequestCreate, ApprovalRequestRead, ApprovalDecision
 from app.services.approvals.approval_service import ApprovalService
 
-router = APIRouter()
+router = APIRouter(prefix="/approvals", tags=["approvals"])
 service = ApprovalService()
 
 

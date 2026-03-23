@@ -5,7 +5,7 @@ from app.db.session import get_db
 from app.schemas.execution_audit import ExecutionAuditRead
 from app.services.audit.execution_audit_service import ExecutionAuditService
 
-router = APIRouter()
+router = APIRouter(prefix="/approvals", tags=["approvals"])
 service = ExecutionAuditService()
 
 

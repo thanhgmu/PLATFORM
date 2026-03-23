@@ -7,7 +7,8 @@ class AgentDefinition(Base):
     __tablename__ = "agent_definitions"
 
     id = Column(Integer, primary_key=True, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=True, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=True, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     key = Column(String, nullable=False, unique=True, index=True)
     display_name = Column(String, nullable=False)
     source_type = Column(String, nullable=False, default="core")

@@ -7,7 +7,8 @@ class Case(Base):
     __tablename__ = "cases"
 
     id = Column(Integer, primary_key=True, index=True)
-    tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    #tenant_id = Column(Integer, ForeignKey("tenants.id"), nullable=False, index=True)
+    tenant_id = Column(Integer, nullable=False, index=True)
     title = Column(String, nullable=False)
     status = Column(String, nullable=False, default="open", index=True)
     created_by = Column(Integer, ForeignKey("users.id"), nullable=True)
